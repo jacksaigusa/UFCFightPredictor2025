@@ -1,0 +1,1 @@
+scrape_fighter_stats.py is used 
