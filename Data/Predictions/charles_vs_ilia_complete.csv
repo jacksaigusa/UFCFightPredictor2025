@@ -1,0 +1,11 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Ilia Topuria,Charles Oliveira,win,0.61,TRUE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Alexandre Pantoja,Kai Kara-France,win,0.52,TRUE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Brandon Royval,Joshua Van,loss,0.56,TRUE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Beneil Dariush,Renato Moicano,loss,0.62,FALSE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Payton Talbott,Felipe Lima,loss,0.65,FALSE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Jack Hermansson,Gregory Rodrigues,win,0.6,FALSE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Hyder Amil,Jose Delgado,loss,0.58,TRUE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Viviane Araujo,Tracy Cortez,loss,0.53,TRUE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Terrance McKinney,Viacheslav Borshchev,win,0.71,TRUE
+UFC 317: Topuria vs. Oliveira,2025-06-07T00:00:00.000000,Niko Price,Jacobe Smith,loss,0.76,TRUE

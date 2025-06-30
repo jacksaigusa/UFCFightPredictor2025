@@ -9,6 +9,8 @@ from sklearn.datasets import make_multilabel_classification
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.linear_model import LogisticRegression
 import numpy as np
+from sklearn.model_selection import RandomizedSearchCV
+
 data = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/elofightstats5122025.csv")
 
 #removing old fights to see if performance improves: it doesnt, slightly worse
@@ -21,11 +23,11 @@ data = data.with_columns(
 data = data.with_columns(
     (pl.col("date")-reference_date).dt.total_days().alias("date")
 )
-print(f"dataset size before filtering out old fights: {data.shape}")
+#print(f"dataset size before filtering out old fights: {data.shape}")
 
 #data = data.filter(pl.col("date") >= 14600)
 
-print(f"dataset size after filtering out old fights: {data.shape}")
+#print(f"dataset size after filtering out old fights: {data.shape}")
 #removing missing weight values
 '''data = data.filter(
     pl.col("fighter_weight") != "--", 
@@ -151,7 +153,8 @@ selected_columns = [
     "opponent_opp_avg_elo",
     "result",
     "fighter_age",
-    "opponent_age"
+    "opponent_age", 
+    "weight_class"
 ]
 
 
@@ -188,22 +191,26 @@ data = data.with_columns(
     pl.col("result").map_batches(enc.fit_transform).alias("result")
 )
 #encode other variables if you want to predict method and round as well
-'''data = data.with_columns(
-    pl.col("method").map_batches(enc.fit_transform).alias("method")
+
+lightest = data.filter(
+    pl.col("weight_class") == 0
 )
-data = data.with_columns(
-    pl.col("round").map_batches(enc.fit_transform).alias("round")
-)'''
-
-
-X = data.drop("result")
-y = data["result"]
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+light = data.filter(
+    pl.col("weight_class") == 1
 )
+mid = data.filter(
+    pl.col("weight_class") == 2
+)
+heavy = data.filter(
+    (pl.col("weight_class") == 3) | (pl.col("weight_class") == -1)
+) #205+ group contains the smallest number of rows, so I added all rows with unknown weight classes to heavy
 
-from sklearn.model_selection import RandomizedSearchCV
+weight_classes = [lightest, light, mid, heavy]
+for weight_class in weight_classes:
+    print(weight_class.shape)
+
+
+
 param_dist = {
     'n_estimators': [100, 200, 300, 500],
     'max_features': ['auto', 'sqrt', 'log2'],
@@ -212,64 +219,135 @@ param_dist = {
     'min_samples_leaf': [1, 2, 4],
     'bootstrap': [True, False]
 }
-# trying to predict multiple variables: result, method, and round
-'''data = data.drop_nans()
-data = data.drop_nulls()
-X = data.drop(["result", "method", "round"])
-y = data["result", "method", "round"]
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state=42)
-'''
-# multi output classifier wrapper if predicting multiple variables
-#model = MultiOutputClassifier(RandomForestClassifier()).fit(X_train, y_train)
-model = RandomForestClassifier(n_estimators=300, min_samples_split=5, min_samples_leaf=1, max_features='log2', max_depth=10, bootstrap=True)
-#model = AdaBoostClassifier()
-#model = XGBClassifier()
 
-model.fit(X_train, y_train)
+# lightest weight model
+X = lightest.drop("result")
+y = lightest["result"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 
 
-y_pred = model.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-#accuracy metric is different for predicting multiple variables
-'''def exact_match(y_true, y_pred):
-    y_true_np = y_true.to_numpy()
-    #y_pred_np = y_pred.to_numpy()
-    matches = np.all(y_true_np == y_pred, axis=1)
-    return np.mean(matches)'''
-print("MODEL TRAINED ON FIGHTS OF ALL WEIGHT CLASSES\n")
-print(f"Train set size: {X_train.shape}")
-print(f"Test set size: {y_test.shape}")
-print(f"Accuracy: {accuracy}")
-
-# feature importances 
-
-feature_importances = model.feature_importances_
-
-feature_importance_df = pl.DataFrame(
-    {"Feature": X.columns, "Importance": feature_importances}
-)
-
-feature_importance_df = feature_importance_df.sort("Importance", descending=True)
-
-plt.figure(figsize=(15, 10))
-plt.barh(feature_importance_df["Feature"], feature_importance_df["Importance"])
-plt.xlabel("Importance")
-plt.ylabel("Feature")
-plt.title("Feature Importances of RandomForest Classifier Features")
-plt.show()
-
-# the RandomForest classifier, trained on all fight data from 1993-present, is the most accurate, with an accuracy score of 0.70 on test set of size 2138 fights.
+lightest_model = RandomForestClassifier(
+    random_state=42, n_estimators=200, min_samples_split=10, min_samples_leaf=4, max_features='sqrt', max_depth=None, bootstrap=True)
+lightest_model.fit(X_train, y_train)
 
 
 
+
+
+y_pred = lightest_model.predict(X_test)
+lightest_accuracy = accuracy_score(y_test, y_pred)
+
+lightest_test_size = len(y_pred)
+print("LIGHTEST MODEL: 115-135LBS")
+print(f"training set size: {pl.DataFrame(X_train).shape}")
+print(f"testing set size: {pl.DataFrame(X_test).shape}")
+print(f"Accuracy: {round(lightest_accuracy, 2)}\n")
+
+
+
+
+
+
+
+# light weight model
+X = light.drop("result")
+y = light["result"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+
+light_model = RandomForestClassifier(random_state=42, n_estimators=200, min_samples_split=10, min_samples_leaf=4, max_features='sqrt', max_depth=None, bootstrap=True)
+light_model.fit(X_train, y_train)
+
+y_pred = light_model.predict(X_test)
+light_accuracy = accuracy_score(y_test, y_pred)
+
+light_test_size = len(y_pred)
+print("LIGHT MODEL: 145-155LBS")
+
+
+
+
+print(f"training set size: {pl.DataFrame(X_train).shape}")
+print(f"testing set size: {pl.DataFrame(X_test).shape}")
+print(f"Accuracy: {round(light_accuracy, 2)}\n")
+
+
+
+
+# mid model 
+X = mid.drop("result")
+y = mid["result"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+
+mid_model = RandomForestClassifier(random_state=42)
+mid_model.fit(X_train, y_train)
+
+y_pred = mid_model.predict(X_test)
+mid_accuracy = accuracy_score(y_test, y_pred)
+mid_test_size = len(y_pred)
+print("MID MODEL: 170-185LBS")
+print(f"training set size: {pl.DataFrame(X_train).shape}")
+print(f"testing set size: {pl.DataFrame(X_test).shape}")
+print(f"Accuracy: {round(mid_accuracy, 2)}\n")
+
+
+
+
+# heavy model 
+
+
+
+X = heavy.drop("result")
+y = heavy["result"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+
+heavy_model = RandomForestClassifier(random_state=42)
+
+heavy_model.fit(X_train, y_train)
+
+
+y_pred = heavy_model.predict(X_test)
+
+heavy_accuracy = accuracy_score(y_test, y_pred)
+
+heavy_test_size = len(y_pred)
+print("HEAVY MODEL: 205+LBS")
+print(f"training set size: {pl.DataFrame(X_train).shape}")
+print(f"testing set size: {pl.DataFrame(X_test).shape}")
+print(f"Accuracy: {round(heavy_accuracy, 2)}\n")
+
+
+
+# For each model, examine feature importance
+for name, model in [("Lightest", lightest_model), ("Light", light_model), 
+                    ("Mid", mid_model), ("Heavy", heavy_model)]:
+    importances = model.feature_importances_
+    feature_names = X.columns
+    
+    # Sort features by importance
+    indices = np.argsort(importances)[::-1]
+    
+    print(f"\n{name} Weight Class - Top 10 Features:")
+    for i in range(10):
+        print(f"{feature_names[indices[i]]}: {importances[indices[i]]:.4f}")
+all_weight_classes = [lightest_accuracy, light_accuracy, mid_accuracy, heavy_accuracy]
+average_accuracy = np.mean(all_weight_classes)
+print(f"\n\nMEAN ACCURACY OF ALL WEIGHT CLASS-SPECIFIC MODELS: {average_accuracy}")
 num_right = 0
-for i in range(len(y_pred)):
-    if y_pred[i] == y_test[i]:
-        num_right += 1
-
-print(f"\nNUMBER OF CORRECT PREDICTIONS FOR MODEL TRAINED ON ALL WEIGHT CLASSES: {num_right}")
-
+test_sizes = [lightest_test_size, light_test_size, mid_test_size, heavy_test_size]
+for i in range(len(all_weight_classes)):
+    num_right += (all_weight_classes[i] * test_sizes[i])
+print(f"\n\nNUMBER OF CORRECT PREDICTIONS COMBINED FOR ALL WEIGHT CLASS-SPECIFIC MODELS: {num_right}")
 
 
 

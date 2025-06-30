@@ -1,0 +1,12 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Jamahal Hill,Khalil Rountree Jr.,loss,0.6,TRUE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Rafael Fiziev,Ignacio Bahamondes,loss,0.62,FALSE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Curtis Blaydes,Rizvan Kuniev,win,0.53,TRUE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Nazim Sadykhov,Nikolas Motta,win,0.61,TRUE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Muhammad Naimov,Bogdan Grad,loss,0.52,FALSE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Seokhyeon Ko,Oban Elliott,win,0.49,TRUE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Ismail Naurdiev,JunYong Park,loss,0.51,TRUE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Daria Zhelezniakova,Melissa Mullins,loss,0.56,FALSE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Irina Alekseeva,Klaudia Sygula,win,0.51,FALSE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Tagir Ulanbekov,Azat Maksum,win,0.67,TRUE
+UFC Fight Night: Hill vs. Rountree Jr.,2025-06-07T00:00:00.000000,Hamdy Abdelwahab,Mohammed Usman,win,0.77,FALSE

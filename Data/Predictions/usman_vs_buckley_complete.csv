@@ -1,0 +1,14 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Kamaru Usman,Joaquin Buckley,loss,0.6,FALSE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Rose Namajunas,Miranda Maverick,win,0.54,TRUE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Edmen Shahbazyan,Andre Petroski,win,0.52,TRUE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Cody Garbrandt,Raoni Barcelos,loss,0.52,TRUE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Mansur Abdul-Malik,Cody Brundage,win,0.82,TRUE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Alonzo Menifield,Oumar Sy,loss,0.62,FALSE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Paul Craig,Rodolfo Bellato,loss,0.77,FALSE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Michael Chiesa,Court McGee,win,0.59,TRUE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Malcolm Wellmaker,Kris Moutinho,win,0.67,TRUE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Cody Durden,Jose Ochoa,loss,0.52,TRUE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Ricky Simon,Cameron Smotherman,win,0.71,TRUE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Phil Rowe,Ange Loosa,loss,0.51,FALSE
+UFC Fight Night: Usman vs. Buckley,2025-06-07T00:00:00.000000,Jamey-Lyn Horth,Vanessa Demopoulos,win,0.55,TRUE
