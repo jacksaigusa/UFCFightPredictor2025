@@ -1,0 +1,12 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Robert Whittaker,Reinier de Ridder,win,0.53,FALSE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Petr Yan,Marcus McGhee,win,0.6,TRUE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Shara Magomedov,Marc-Andre Barriault,loss,0.54,FALSE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Asu Almabayev,Ramazan Temirov,win,0.52,TRUE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Nikita Krylov,Bogdan Guskov,loss,0.53,TRUE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Bryce Mitchell,Said Nurmagomedov,loss,0.56,FALSE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Muslim Salikhov,Carlos Leal,loss,0.51,FALSE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Davey Grant,Da'Mon Blackshear,loss,0.58,FALSE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Amanda Ribas,Tabatha Ricci,loss,0.56,TRUE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Ibo Aslan,Billy Elekana,loss,0.51,TRUE
+UFC Fight Night: Whittaker vs. De Ridder,2025-06-07T00:00:00.000000,Mohammad Yahya,Steven Nguyen,loss,0.69,TRUE

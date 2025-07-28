@@ -1,0 +1,14 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Max Holloway,Dustin Poirier,loss,0.54,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Paulo Costa,Roman Kopylov,loss,0.53,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Kevin Holland,Daniel Rodriguez,win,0.53,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Dan Ige,Patricio Freire,win,0.68,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Michael Johnson,Daniel Zellhuber,loss,0.57,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Kyler Phillips,Vinicius Oliveira,loss,0.6,TRUE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Marvin Vettori,Brendan Allen,win,0.52,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Francisco Prado,Nikolay Veretennikov,win,0.55,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Ateba Gautier,Robert Valentin,win,0.7,TRUE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Adam Fugitt,Islam Dulatov,loss,0.6,TRUE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Jimmy Crute,Marcin Prachnio,loss,0.55,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Ryan Spann,Lukasz Brzeski,loss,0.65,FALSE
+UFC 318: Holloway vs. Poirier 3,2025-06-07T00:00:00.000000,Carli Judice,Nicolle Caliari,win,0.57,TRUE

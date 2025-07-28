@@ -21,17 +21,8 @@ data = data.with_columns(
 data = data.with_columns(
     (pl.col("date")-reference_date).dt.total_days().alias("date")
 )
-print(f"dataset size before filtering out old fights: {data.shape}")
 
-#data = data.filter(pl.col("date") >= 14600)
-
-print(f"dataset size after filtering out old fights: {data.shape}")
 #removing missing weight values
-'''data = data.filter(
-    pl.col("fighter_weight") != "--", 
-    pl.col("opponent_weight") != "--"
-)'''
-
 data = data.with_columns(
     pl.when(pl.col("fighter_weight") != "--").then(pl.col("fighter_weight").str.slice(0, 3).cast(pl.Int32, strict=False)).otherwise(None).alias("fighter_weight")
 )
@@ -74,8 +65,8 @@ print(data["weight_class"].head())
 
 
 
-'''print(f"average fighter weight: {data["fighter_weight"].mean()}")
-print(f"average opponent weight: {data["opponent_weight"].mean()}")'''
+print(f"average fighter weight: {data["fighter_weight"].mean()}")
+print(f"average opponent weight: {data["opponent_weight"].mean()}")
 
 data = data.drop_nans(subset=[
         "fighter_kd_differential",
@@ -212,18 +203,17 @@ param_dist = {
     'min_samples_leaf': [1, 2, 4],
     'bootstrap': [True, False]
 }
-# trying to predict multiple variables: result, method, and round
+# uncomment 5 lines below to predict multiple variables: result, method, and round
 '''data = data.drop_nans()
 data = data.drop_nulls()
 X = data.drop(["result", "method", "round"])
 y = data["result", "method", "round"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state=42)
 '''
-# multi output classifier wrapper if predicting multiple variables
+# uncomment line below to try multi output classifier wrapper if predicting multiple variables
 #model = MultiOutputClassifier(RandomForestClassifier()).fit(X_train, y_train)
 model = RandomForestClassifier(n_estimators=300, min_samples_split=5, min_samples_leaf=1, max_features='log2', max_depth=10, bootstrap=True)
-#model = AdaBoostClassifier()
-#model = XGBClassifier()
+
 
 model.fit(X_train, y_train)
 
@@ -231,7 +221,7 @@ model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
-#accuracy metric is different for predicting multiple variables
+#accuracy metric is different for predicting multiple variables. Uncomment and use function below to asses multi output accuracy
 '''def exact_match(y_true, y_pred):
     y_true_np = y_true.to_numpy()
     #y_pred_np = y_pred.to_numpy()

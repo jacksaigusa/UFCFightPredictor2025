@@ -11,8 +11,7 @@ from sklearn.linear_model import LogisticRegression
 import numpy as np
 from termcolor import colored
 data = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/elofightstats5122025.csv")
-data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/lewis_vs_tex.csv")
-#removing old fights to see if performance improves: it doesnt, slightly worse
+data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/taira_vs_park.csv")
 
 reference_date = pl.date(1970, 1, 1)
 data = data.with_columns(
@@ -238,9 +237,9 @@ data_test = data_test.with_columns(
     (pl.col("opponent_dob")-reference_date).dt.total_days().alias("opponent_age")
 )
 
-#define weight classes
-# create seperate weight class datasets
-# train separate models
+
+
+
 # iterate over rows of y_test, determining which model to use to make prediction at each iteration by checking the weight class
 
 
@@ -248,6 +247,9 @@ data = data[selected_columns]
 data_test = data_test[selected_columns]
 # save the data for later use
 #data.write_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/elo_training_data.csv")
+
+# create seperate weight class datasets
+
 enc = LabelEncoder()
 data = data.with_columns(
     pl.col("result").map_batches(enc.fit_transform).alias("result")
@@ -275,7 +277,7 @@ lightest_model = RandomForestClassifier(
     random_state=42, n_estimators=200, min_samples_split=10, min_samples_leaf=4, max_features='sqrt', max_depth=None, bootstrap=True)
 lightest_model.fit(X, y)
 
-# light weight model
+# light weight model 
 
 X = light.drop("result")
 y = light["result"]
@@ -301,7 +303,7 @@ heavy_model = RandomForestClassifier(random_state=42)
 heavy_model.fit(X, y)
 
 
-# make predictions with correct model base don weight class 
+# make predictions with correct model based on weight class 
 
 data_test = data_test.drop("result")
 y_pred = []
@@ -330,67 +332,17 @@ new_predictions = y_pred
 #create probabilities array 
 probabilities = [max(probs) for probs in y_pred_probs]
 
-#encode other variables if you want to predict method and round as well
-'''data = data.with_columns(
-    pl.col("method").map_batches(enc.fit_transform).alias("method")
-)
-data = data.with_columns(
-    pl.col("round").map_batches(enc.fit_transform).alias("round")
-)'''
-
-
-'''X = data.drop("result")
-y = data["result"]
-
-
-
-
-model = RandomForestClassifier(n_estimators=300, min_samples_split=5, min_samples_leaf=1, max_features='log2', max_depth=10, bootstrap=True)
-
-model.fit(X, y)
-
-
-
-# the RandomForest classifier, trained on all fight data from 1993-present, is the most accurate, with an accuracy score of 0.70 on test set of size 2138 fights.
-
-data_test = data_test.drop("result")
-new_predictions = model.predict(data_test)
 new_predictions = enc.inverse_transform(new_predictions)
-new_fights_with_names = data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/blanchfield_vs_barber.csv")
-i = 0
-seen = set()
-
-print(colored("\n\n\tPREDICTIONS FOR UFC FIGHT NIGHT: BLANCHFIELD VS BARBER\n", 'yellow', 'on_black', ['bold', 'blink']))
-for row in new_fights_with_names.iter_rows():
-    fighter_name = row[3]
-    opponent_name = row[33]
-    if fighter_name in seen or opponent_name in seen:
-        i += 1
-        continue
-    if new_predictions[i] == "loss":
-        print(colored(f"   {fighter_name} will lose against {opponent_name}.", "red"))
-    elif new_predictions[i] == "draw":
-        print("   The fight will result in a draw.")
-    else:
-        print(colored(f"   {fighter_name} will {new_predictions[i]} against {opponent_name}.", "green"))
-    seen.add(fighter_name)
-    seen.add(opponent_name)
-    i += 1
-print(f"last index: {i}")
-print(f"length: {len(new_predictions)}")'''
-new_predictions = enc.inverse_transform(new_predictions)
-new_fights_with_names = data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/lewis_vs_tex.csv")
+new_fights_with_names = data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/taira_vs_park.csv")
 i = 0
 seen = set()
 fights_with_predictions = []
-# visual aestetics
+
+
+
+event_name = "UFC Fight Night: Taira vs. Park" ## IMPORTANT: CHANGE EVENT NAME BEFORE SAVING ##
+
 import time
-from ascii_magic import AsciiArt
-
-
-event_name = "UFC Fight Night: Lewis vs. Teixeira" # IMPORTANT: CHANGE EVENT NAME BEFORE SAVING
-
-
 ## IMPORTANT: Change the date to correct date if storing new predictions in db ##
 fight_date = datetime(2025, 6, 7)
 print(colored(f"\n\n\tPREDICTIONS FOR {event_name}\n", 'yellow', 'on_black', ['bold', 'blink']))
@@ -415,50 +367,23 @@ for row in new_fights_with_names.iter_rows():
     
 print(f"last index: {i}")
 print(f"length: {len(new_predictions)}\n\n")
+
+
 # save predictions to update after event
 
 prediction_file = pl.DataFrame(fights_with_predictions)
 
-
-
-
-
 prediction_file = prediction_file.with_columns(
     pl.lit(event_name).alias("event"), 
     pl.lit(True).alias("correct")
-    
-
 )
 
-print(prediction_file.head())
+
 # Make sure to change output file name for new predictions
-
-prediction_file.write_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/Predictions/lewis_vs_tex_complete.csv")
+prediction_file.write_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/Predictions/taira_vs_park_complete.csv")
 print("predictions saved to csv!")
-'''import climage
-art = climage.convert("/Users/jacksaigusa/Downloads/chama.jpg")
-lines = art.split('/n')
-for line in lines:
 
-    print(line)
-    time.sleep(0.1)'''
-art = AsciiArt.from_image("/Users/jacksaigusa/Downloads/chama.jpg")
-art = art.to_ascii()
-lines = art.split('\n')
-for line in lines:
-    print(line)
-    time.sleep(0.1)
-
-'''george_floyd = AsciiArt.from_image("/Users/jacksaigusa/Downloads/george_floyd.jpg")
-george_floyd = george_floyd.to_ascii()
-george_floyd_lines = george_floyd.split('\n')
-for george_floyd_line in george_floyd_lines:
-    print(george_floyd_line)
-    time.sleep(0.2)'''
-
-#print(fights_with_predictions)
-
-#save to sqlalchemy database 
+#save predictions to sqlalchemy database 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 

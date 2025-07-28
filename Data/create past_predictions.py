@@ -1,10 +1,8 @@
 import polars as pl
 from termcolor import colored
-# import data into new flask sql alchemy database
-# delete each past fight put in db4 from db3
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-past_predictions = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/Predictions/charles_vs_ilia_complete.csv")
+past_predictions = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/Predictions/rob_vs_rdr_complete.csv")
 
 past_predictions = past_predictions.drop("date")
 print(past_predictions.head())

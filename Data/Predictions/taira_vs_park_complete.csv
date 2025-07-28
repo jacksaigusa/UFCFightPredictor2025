@@ -1,0 +1,12 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Tatsuro Taira,HyunSung Park,loss,0.47,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Mateusz Rebecki,Chris Duncan,win,0.56,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Elves Brener,Esteban Ribovics,loss,0.58,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Karol Rosa,Nora Cornolle,loss,0.61,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Neil Magny,Elizeu Zaleski dos Santos,loss,0.61,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Danny Silva,Kevin Vallejos,loss,0.59,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Rinya Nakamura,Nathan Fletcher,win,0.55,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Rodolfo Vieira,Tresean Gore,loss,0.53,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Nick Klein,Andrey Pulyaev,loss,0.59,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Rafael Estevam,Felipe Bunes,win,0.64,true
+UFC Fight Night: Taira vs. Park,2025-06-07T00:00:00.000000,Piera Rodriguez,Ketlen Souza,win,0.76,true

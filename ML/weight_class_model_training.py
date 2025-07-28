@@ -23,16 +23,8 @@ data = data.with_columns(
 data = data.with_columns(
     (pl.col("date")-reference_date).dt.total_days().alias("date")
 )
-#print(f"dataset size before filtering out old fights: {data.shape}")
 
-#data = data.filter(pl.col("date") >= 14600)
 
-#print(f"dataset size after filtering out old fights: {data.shape}")
-#removing missing weight values
-'''data = data.filter(
-    pl.col("fighter_weight") != "--", 
-    pl.col("opponent_weight") != "--"
-)'''
 
 data = data.with_columns(
     pl.when(pl.col("fighter_weight") != "--").then(pl.col("fighter_weight").str.slice(0, 3).cast(pl.Int32, strict=False)).otherwise(None).alias("fighter_weight")
@@ -51,6 +43,7 @@ data = data.with_columns(
 )
 
 print(data["fighter_weight"].head())
+
 # Creating new column for weight class. 
 #   115-135: lightest, encoded as 0
 #   145-155: light, encoded as 1
@@ -76,8 +69,7 @@ print(data["weight_class"].head())
 
 
 
-'''print(f"average fighter weight: {data["fighter_weight"].mean()}")
-print(f"average opponent weight: {data["opponent_weight"].mean()}")'''
+
 
 data = data.drop_nans(subset=[
         "fighter_kd_differential",
@@ -184,8 +176,7 @@ data = data.with_columns(
 
 data = data[selected_columns]
 
-# save the data for later use
-#data.write_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/elo_training_data.csv")
+
 enc = LabelEncoder()
 data = data.with_columns(
     pl.col("result").map_batches(enc.fit_transform).alias("result")
@@ -245,11 +236,7 @@ print(f"training set size: {pl.DataFrame(X_train).shape}")
 print(f"testing set size: {pl.DataFrame(X_test).shape}")
 print(f"Accuracy: {round(lightest_accuracy, 2)}\n")
 
-
-
-
-
-
+# train weight class-specific models
 
 # light weight model
 X = light.drop("result")

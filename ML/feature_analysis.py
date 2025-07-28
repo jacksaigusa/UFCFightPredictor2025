@@ -193,7 +193,7 @@ mid = data.filter(
 )
 heavy = data.filter(
     (pl.col("weight_class") == 3) | (pl.col("weight_class") == -1)
-) #205+ group contains the smallest number of rows, so I added all rows with unknown weight classes to heavy
+) #205+ group contains the smallest number of rows, so fights with unknown weight classes were added all to heavy
 
 
 
@@ -287,7 +287,7 @@ weight_class_legend_elements = [Line2D([0], [0], marker=marker, color='black',
 
 # Add two separate legends
 first_legend = plt.legend(handles=outcome_legend_elements, title="Outcome", loc='upper left')
-plt.gca().add_artist(first_legend)  # Add the first legend
+plt.gca().add_artist(first_legend)  
 
 plt.legend(handles=weight_class_legend_elements, title="Weight Class", loc='upper right')
 
@@ -313,7 +313,7 @@ X = data.drop("result")
 # accuracy of model with PC1 as an additional feature: 0.68
 # normal accuracy without PC1: 0.68
 
-#X = pl.concat([X, pl.DataFrame({"PC1":principleDf["PC1"]})], how="horizontal")
+X = pl.concat([X, pl.DataFrame({"PC1":principleDf["PC1"]})], how="horizontal")
 y = data["result"]
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42

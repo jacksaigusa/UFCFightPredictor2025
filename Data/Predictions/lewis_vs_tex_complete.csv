@@ -1,13 +1,13 @@
 event,date,fighter_name,opponent_name,prediction,confidence,correct
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Derrick Lewis,Tallison Teixeira,loss,0.65,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Stephen Thompson,Gabriel Bonfim,loss,0.62,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Calvin Kattar,Steve Garcia,loss,0.64,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Nate Landwehr,Morgan Charriere,loss,0.68,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Vitor Petrino,Austen Lane,win,0.54,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Junior Tafa,Tuco Tokkos,win,0.92,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Max Griffin,Chris Curtis,loss,0.59,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Jake Matthews,Chidi Njokuani,win,0.62,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Lauren Murphy,Eduarda Moura,loss,0.61,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Kennedy Nzechukwu,Valter Walker,loss,0.52,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Mitch Ramirez,Mike Davis,win,0.51,true
-UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Fatima Kline,Melissa Martinez,win,0.59,true
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Derrick Lewis,Tallison Teixeira,loss,0.65,FALSE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Stephen Thompson,Gabriel Bonfim,loss,0.62,TRUE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Calvin Kattar,Steve Garcia,loss,0.64,TRUE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Nate Landwehr,Morgan Charriere,loss,0.68,TRUE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Vitor Petrino,Austen Lane,win,0.54,TRUE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Junior Tafa,Tuco Tokkos,win,0.92,FALSE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Max Griffin,Chris Curtis,loss,0.59,TRUE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Jake Matthews,Chidi Njokuani,win,0.62,TRUE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Lauren Murphy,Eduarda Moura,loss,0.61,TRUE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Kennedy Nzechukwu,Valter Walker,loss,0.52,TRUE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Mitch Ramirez,Mike Davis,win,0.51,FALSE
+UFC Fight Night: Lewis vs. Teixeira,2025-06-07T00:00:00.000000,Fatima Kline,Melissa Martinez,win,0.59,TRUE
