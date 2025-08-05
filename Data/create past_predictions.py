@@ -2,7 +2,7 @@ import polars as pl
 from termcolor import colored
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-past_predictions = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/Predictions/rob_vs_rdr_complete.csv")
+past_predictions = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/Predictions/taira_vs_park_complete.csv")
 
 past_predictions = past_predictions.drop("date")
 print(past_predictions.head())

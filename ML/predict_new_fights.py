@@ -11,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 import numpy as np
 from termcolor import colored
 data = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/elofightstats5122025.csv")
-data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/taira_vs_park.csv")
+data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/dolidze_vs_hernandez.csv")
 
 reference_date = pl.date(1970, 1, 1)
 data = data.with_columns(
@@ -333,14 +333,14 @@ new_predictions = y_pred
 probabilities = [max(probs) for probs in y_pred_probs]
 
 new_predictions = enc.inverse_transform(new_predictions)
-new_fights_with_names = data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/taira_vs_park.csv")
+new_fights_with_names = data_test = pl.read_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/dolidze_vs_hernandez.csv")
 i = 0
 seen = set()
 fights_with_predictions = []
 
 
 
-event_name = "UFC Fight Night: Taira vs. Park" ## IMPORTANT: CHANGE EVENT NAME BEFORE SAVING ##
+event_name = "UFC Fight Night: Dolidze vs. Hernandez" ## IMPORTANT: CHANGE EVENT NAME BEFORE SAVING ##
 
 import time
 ## IMPORTANT: Change the date to correct date if storing new predictions in db ##
@@ -380,7 +380,7 @@ prediction_file = prediction_file.with_columns(
 
 
 # Make sure to change output file name for new predictions
-prediction_file.write_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/Predictions/taira_vs_park_complete.csv")
+prediction_file.write_csv("/Users/jacksaigusa/Downloads/UFCPredictor2025/Data/Predictions/dolidze_vs_hernandez_complete.csv")
 print("predictions saved to csv!")
 
 #save predictions to sqlalchemy database 
@@ -426,6 +426,9 @@ with app.app_context():
         print(colored(f"Error storing predictions: {e}", "red"))
     finally:
         db3.session.close()
+
+# run command after successful test db update 
+#cp instance/{predictions.db,past_predictions.db} WebApp/backend/instance/
 
 
 

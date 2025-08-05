@@ -4,7 +4,7 @@ import csv
 import os
 
 input_csv_filename = os.path.join("", "fighter_stats512025.csv")
-output_csv_filename = os.path.join("Data", "taira_vs_park.csv")
+output_csv_filename = os.path.join("Data", "dolidze_vs_hernandez.csv")
 
 fieldnames = [
     "id",
@@ -124,7 +124,7 @@ def main():
     response = requests.get(url)
 
     # to get one event, paste the url in event_urls and comment out the part below
-    event_urls = ["http://ufcstats.com/event-details/f2c934689243fe4e"]
+    event_urls = ["http://ufcstats.com/event-details/6cd3dfc54f01287f"]
 
     # if response.status_code == 200:
     #     soup = BeautifulSoup(response.text, 'html.parser')

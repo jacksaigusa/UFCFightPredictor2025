@@ -1,0 +1,12 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Roman Dolidze,Anthony Hernandez,loss,0.55,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Steve Erceg,Ode Osbourne,loss,0.52,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Iasmin Lucindo,Angela Hill,loss,0.52,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Andre Fili,Christian Rodriguez,loss,0.61,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Miles Johns,Jean Matsumoto,win,0.5,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Eryk Anders,Christian Leroy Duncan,loss,0.63,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Julius Walker,Rafael Cerqueira,win,0.53,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Elijah Smith,Toshiomi Kazama,loss,0.78,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Joselyne Edwards,Priscila Cachoeira,win,0.66,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Uros Medic,Gilbert Urbina,loss,0.63,true
+UFC Fight Night: Dolidze vs. Hernandez,2025-06-07T00:00:00.000000,Gabriella Fernandes,Julija Stoliarenko,win,0.78,true
