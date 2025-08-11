@@ -1,0 +1,12 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Dricus Du Plessis,Khamzat Chimaev,loss,0.48,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Geoff Neal,Carlos Prates,win,0.71,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Jared Cannonier,Michael Page,win,0.5,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Tim Elliott,Kai Asakura,win,0.81,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,King Green,Diego Ferreira,loss,0.63,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Gerald Meerschaert,Michal Oleksiejczuk,loss,0.71,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Jessica Andrade,Loopy Godinez,loss,0.6,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Chase Hooper,Alexander Hernandez,win,0.5,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Edson Barboza,Drakkar Klose,loss,0.54,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Bryan Battle,Nursulton Ruziboev,win,0.6,true
+UFC 319: Du Plessis vs. Chimaev,2025-06-07T00:00:00.000000,Karine Silva,JJ Aldrich,loss,0.53,true
