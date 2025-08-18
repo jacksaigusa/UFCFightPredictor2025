@@ -35,7 +35,9 @@ This project scrapes fighter statistics from UFCStats.com, processes historical 
 │   ├── elo_fightstats.db          # Processed fight data
 │   └── predictions.db             # Fight predictions database
 ├── allfighters.txt                # Fighter data output
-└── elofightstats5122025.csv      # Training dataset
+├── Data  
+│   ├── elofightstats5122025.csv      # Training dataset
+│   └── Predictions                # Folder of generated predictions
 ```
 
 ## 🔧 Installation & Setup
