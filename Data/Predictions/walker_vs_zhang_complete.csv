@@ -1,0 +1,13 @@
+event,date,fighter_name,opponent_name,prediction,confidence,correct
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Johnny Walker,Zhang Mingyang,loss,0.75,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Brian Ortega,Aljamain Sterling,loss,0.63,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Sergei Pavlovich,Waldo Cortes-Acosta,win,0.6,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Sumudaerji,Kevin Borjas,win,0.49,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Taiyilake Nueraji,Kiefer Crosbie,win,0.74,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Maheshate,Gauge Young,win,0.59,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Lone'er Kavanagh,Charles Johnson,win,0.61,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Rongzhu,Austin Hubbard,win,0.74,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Michel Pereira,Kyle Daukaus,win,0.68,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Yizha,Westin Wilson,win,0.54,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Xiao Long,SuYoung You,loss,0.58,true
+UFC Fight Night: Walker vs. Zhang,2025-06-07T00:00:00.000000,Uran Satybaldiev,Diyar Nurgozhay,loss,0.5,true
