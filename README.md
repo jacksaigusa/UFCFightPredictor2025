@@ -40,14 +40,6 @@ This project scrapes fighter statistics from UFCStats.com, processes historical 
 │   └── Predictions                # Folder of generated predictions
 ```
 
-## 🔧 Installation & Setup
-
-### Prerequisites
-
-```bash
-pip install pandas scikit-learn sqlite3 requests beautifulsoup4 flask
-npm install  # For React frontend
-```
 
 ### Database Setup
 
