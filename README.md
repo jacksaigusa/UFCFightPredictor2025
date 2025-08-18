@@ -1,7 +1,89 @@
-Best performing model: RandomForest, accuracy: 70.44% accurate on a test set of 2,138 fights.
-scrape_fighter_stats.py is used to scrape all fighter stats from ufcstats.com from 1993-present. The resulting fighter data is stored in an SQLite database, in the instance folder, called detailed_fighter_stats.db. The output can also be viewed in allfighters.txt. 
-Historical fight data suitable for model training is created in process_fights.py, which retrieves the data from the fighter stats database and uses it to match fighter data with historical fight data. The output is stored in a new SQLite database, also in the instance folder, called elo_fightstats.db. The resulting csv file, elofightstats5122025.csv, was used to train the best performing ML model.
-Model training and testing is done in model_training.py. 
-neural_net_training.py is just the first attempt at training a neural network for the same purposes as the ML model, although the performance was worse than just using RandomForest.
-One hypothesis I wanted to test was seeing if removing old fight data would improve model performance, as I believe that the sport of MMA has changed drastically over the last 15 years or so as fighters and coaches have evolved new ways of mixing the different combat sports. (a good example being the rapidly declining success of pure wrestlers or grapplers in MMA, a group of fighters that used to dominate the early days.) This was disproven by model performance being slightly worse when trained on a dataset containing only fights occurring during or after 2010. However, this does not disprove that a more "recently trained" model will perform better on future matchups. 
-The next hypothesis I would like to test is that model performance will improve if multiple, weight class-specific models are trained to predict fights only from the its corresponding weight class (or group of weight classes). The reason I think this may improve performance is because different stats may have more or less predictive influence at different weight classes simply due to physical differences among different classes. For, example, the stat, "fighter_kd_differential", which represents number of knockdowns in a fighter's career relative to their opponent's in a given matchup, may have more importance in predicting a fight at heavyweight because of the knockout power among the fighters in that division as opposed to any of the women's weight classes, where knockdowns and knockouts are much more rare for obvious reasons. (Not sexist) 
+MMA Fight Predictor
+A machine learning system that predicts UFC fight outcomes using historical fighter statistics and performance metrics.
+
+📌 Overview
+This project scrapes, processes, and analyzes UFC fighter data to:
+
+Build predictive models for fight outcomes
+
+Track historical model performance
+
+Provide predictions for upcoming fights
+
+Best Performing Model: RandomForest Classifier with 70.44% accuracy on a test set of 2,138 fights
+
+🛠️ Project Structure
+Data Pipeline
+text
+WebScrape/
+├── scrape_fighter_stats.py       # Scrapes all fighter stats from ufcstats.com (1993-present)
+├── scrape_new_fights.py          # Scrapes upcoming event data
+└── allfighters.txt               # Output of scraped fighter data
+
+ML/
+├── process_fights.py             # Creates training data by matching fighter stats with historical fights
+├── model_training.py             # Main model training and testing
+├── weight_class_model_training.py # Weight-class specific models (+1% improvement)
+├── neural_net_training.py        # (Experimental) Neural network approach
+└── predict_new_fights.py         # Generates predictions for upcoming fights
+Data Storage
+text
+instance/
+├── detailed_fighter_stats.db     # SQLite database of all fighter stats
+└── elo_fightstats.db            # Processed fight data for model training
+Web Application
+text
+WebApp/                           # Full-stack prediction platform
+├── backend/                      # Python Flask API
+└── frontend/                     # React.js interface
+🔍 Key Findings
+Temporal Analysis: Models trained on pre-2010 data performed slightly worse, contrary to the hypothesis that recent data would be more predictive
+
+Weight Class Specialization: Weight-class specific models improved accuracy by ~1%
+
+Model Comparison: RandomForest outperformed neural network approaches
+
+🚀 Live Application
+View predictions and model metrics at:
+🌐 https://mmamath.netlify.app/
+
+🔄 Workflow
+Data Collection:
+
+bash
+python WebScrape/scrape_fighter_stats.py
+python WebScrape/scrape_new_fights.py
+Data Processing:
+
+bash
+python ML/process_fights.py
+Model Training:
+
+bash
+python ML/model_training.py
+# or for weight-class models:
+python ML/weight_class_model_training.py
+Generate Predictions:
+
+bash
+python ML/predict_new_fights.py
+📈 Key Metrics
+Test set size: 2,138 fights
+
+Baseline accuracy: 50%
+
+Model accuracy: 70.44% (RandomForest)
+
+Weight-class models: ~71.5% accuracy
+
+📚 Data Sources
+All data scraped from ufcstats.com, covering:
+
+Fight results from 1993 to present
+
+650+ fighter statistics
+
+50+ performance metrics per fighter
+
+🤝 Contributing
+This project welcomes contributions. Please open an issue to discuss potential improvements.
